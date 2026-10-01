@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mon petit univers 🌿</title>
+
+    <style>
+        /* =========================
+           STYLE GÉNÉRAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #3f4542;
+            background: #faf8f4;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================
+           MENU
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(250, 248, 244, 0.92);
+            backdrop-filter: blur(10px);
+
+            border-bottom: 1px solid #e8e1d8;
+        }
+
+        .navbar {
+            max-width: 1100px;
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 25px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 600;
+            color: #71877b;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            font-size: 15px;
+            color: #555d58;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #9b7b72;
+        }
+
+        /* =========================
+           ACCUEIL
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 120px 20px 70px;
+
+            background:
+                linear-gradient(
+                    rgba(250, 248, 244, 0.45),
+                    rgba(250, 248, 244, 0.75)
+                ),
+                url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=85");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            background: rgba(255, 255, 255, 0.78);
+
+            padding: 55px 45px;
+            border-radius: 25px;
+
+            box-shadow: 0 15px 50px rgba(70, 60, 50, 0.12);
+        }
+
+        .hero h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(42px, 7vw, 72px);
+            font-weight: normal;
+            color: #52675d;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding: 13px 28px;
+
+            background: #71877b;
+            color: white;
+
+            border-radius: 30px;
+
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #596f64;
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section:not(.hero) {
+            max-width: 1100px;
+            margin: auto;
+            padding: 100px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-family: Georgia, serif;
+            font-size: 38px;
+            font-weight: normal;
+            color: #52675d;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #888;
+        }
+
+        /* =========================
+           PRÉSENTATION
+        ========================= */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 450px;
+
+            object-fit: cover;
+
+            border-radius: 25px;
+
+            box-shadow: 0 15px 35px rgba(70, 60, 50, 0.12);
+        }
+
+        .about-text h3 {
+            font-family: Georgia, serif;
+            font-size: 30px;
+            color: #9b7b72;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 18px;
+            color: #666;
+        }
+
+        /* =========================
+           MES GOÛTS
+        ========================= */
+
+        .likes {
+            background: #f1eee8;
+            max-width: none !important;
+        }
+
+        .likes-inner {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .like-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .like-card {
+            background: white;
+            padding: 35px 25px;
+
+            text-align: center;
+
+            border-radius: 20px;
+
+            transition: 0.3s;
+
+            box-shadow: 0 8px 25px rgba(70, 60, 50, 0.06);
+        }
+
+        .like-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .like-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .like-card h3 {
+            color: #52675d;
+            margin-bottom: 10px;
+        }
+
+        .like-card p {
+            color: #777;
+            font-size: 15px;
+        }
+
+        /* =========================
+           GALERIE
+        ========================= */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 18px;
+            height: 260px;
+            background: #ddd;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* =========================
+           PETIT MOT
+        ========================= */
+
+        .message {
+            max-width: 850px !important;
+            text-align: center;
+        }
+
+        .message-box {
+            background: #f1eee8;
+            padding: 55px 45px;
+            border-radius: 25px;
+        }
+
+        .message-box .heart {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .message-box p {
+            font-family: Georgia, serif;
+            font-size: 22px;
+            font-style: italic;
+            color: #666;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #52675d;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        .small {
+            font-size: 13px;
+            opacity: 0.75;
+        }
+
+        /* =========================
+           RESPONSIVE / MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .about-image img {
+                height: 350px;
+            }
+
+            .like-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .navbar {
+                padding: 15px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            nav {
+                gap: 8px;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+
+            .hero-content {
+                padding: 40px 25px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            section:not(.hero) {
+                padding: 70px 18px;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item {
+                height: 300px;
+            }
+
+            .message-box {
+                padding: 40px 25px;
+            }
+
+            .message-box p {
+                font-size: 19px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         MENU
+    ========================== -->
+
+    <header>
+        <div class="navbar">
+
+            <div class="logo">
+                Mon petit univers 🌿
+            </div>
+
+            <nav>
+                <a href="#accueil">Accueil</a>
+                <a href="#moi">Moi</a>
+                <a href="#aime">J'aime</a>
+                <a href="#galerie">Photos</a>
+                <a href="#message">Un mot</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- =========================
+         ACCUEIL
+    ========================== -->
+
+    <section class="hero" id="accueil">
+
+        <div class="hero-content">
+
+            <h1>Bienvenue 🌸</h1>
+
+            <p>
+                Bienvenue dans mon petit univers.
+                Quelques mots, quelques images et quelques souvenirs
+                pour te faire découvrir un peu mieux qui je suis.
+            </p>
+
+            <a href="#moi" class="button">
+                Découvrir mon univers
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRÉSENTATION
+    ========================== -->
+
+    <section id="moi">
+
+        <div class="section-title">
+            <h2>Un peu de moi</h2>
+            <p>Parce qu'une personne ne se résume pas à quelques mots...</p>
+        </div>
+
+
+        <div class="about">
+
+            <div class="about-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1499080863202-1f37b2f1a8b8?auto=format&fit=crop&w=1000&q=85"
+                    alt="Une jolie photo">
+
+            </div>
+
+
+            <div class="about-text">
+
+                <h3>Bonjour, moi c'est [Ton prénom] 😊</h3>
+
+                <p>
+                    J'ai créé cette petite page simplement pour partager
+                    un peu de mon univers et quelques choses qui me
+                    ressemblent.
+                </p>
+
+                <p>
+                    J'aime les petits moments simples, les discussions
+                    qui durent longtemps, les découvertes inattendues
+                    et les souvenirs que l'on garde longtemps.
+                </p>
+
+                <p>
+                    Cette page est aussi une manière de mettre quelques
+                    morceaux de ma personnalité en images.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CE QUE J'AIME
+    ========================== -->
+
+    <section class="likes" id="aime">
+
+        <div class="likes-inner">
+
+            <div class="section-title">
+
+                <h2>Ce que j'aime</h2>
+
+                <p>
+                    Quelques petites choses qui font partie de mon quotidien.
+                </p>
+
+            </div>
+
+
+            <div class="like-grid">
+
+                <div class="like-card">
+
+                    <div class="like-icon">🎵</div>
+
+                    <h3>La musique</h3>
+
+                    <p>
+                        Les chansons qui accompagnent les bons moments,
+                        les découvertes musicales et les playlists
+                        improvisées.
+                    </p>
+
+                </div>
+
+
+                <div class="like-card">
+
+                    <div class="like-icon">🌊</div>
+
+                    <h3>Les escapades</h3>
+
+                    <p>
+                        Découvrir de nouveaux endroits, marcher,
+                        prendre des photos et simplement profiter
+                        du moment.
+                    </p>
+
+                </div>
+
+
+                <div class="like-card">
+
+                    <div class="like-icon">☕</div>
+
+                    <h3>Les petits plaisirs</h3>
+
+                    <p>
+                        Un café, une bonne conversation, un coucher
+                        de soleil ou une soirée tranquille.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GALERIE
+    ========================== -->
+
+    <section id="galerie">
+
+        <div class="section-title">
+
+            <h2>Quelques souvenirs 📸</h2>
+
+            <p>
+                Des endroits, des moments et des images que j'aime.
+            </p>
+
+        </div>
+
+
+        <div class="gallery">
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85"
+                    alt="Plage">
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85"
+                    alt="Paysage">
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=85"
+                    alt="Nature">
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85"
+                    alt="Montagnes">
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=900&q=85"
+                    alt="Moment partagé">
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=85"
+                    alt="Amis">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PETIT MOT
+    ========================== -->
+
+    <section class="message" id="message">
+
+        <div class="section-title">
+
+            <h2>Un petit mot 💌</h2>
+
+        </div>
+
+
+        <div class="message-box">
+
+            <div class="heart">
+                ❤️
+            </div>
+
+            <p>
+                "Les plus beaux souvenirs sont souvent les plus simples :
+                une conversation, un sourire, un moment partagé...
+                et parfois, une belle amitié qui rend tout cela encore
+                plus précieux."
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PIED DE PAGE
+    ========================== -->
+
+    <footer>
+
+        <p>
+            Fait avec ❤️ pour partager un petit bout de mon univers.
+        </p>
+
+        <p class="small">
+            © 2026 — Mon petit univers
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
