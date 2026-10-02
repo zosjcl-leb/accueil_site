@@ -221,7 +221,7 @@ function passwordPage(error = "") {
       </button>
 
     </form>
-    <a href="/__logout">Se déconnecter</a>
+
   </div>
 
 </body>
